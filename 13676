@@ -1,0 +1,1250 @@
+UsefulCodes
+
+document.getElementById("text_1").innerHTML
+document.getElementById("Job_Title_-_Auto_Label").innerHTML = "safd"
+
+var element = document.getElementById("mydiv");
+element.innerHTML = "Newasdsd '<div>a</div>'asHeader";
+document.getElementById("MoveToOffice").value = op1;
+document.getElementById("myImage").src = "IMAGES/Profile/Default.jpg";
+
+$('#2_s_2_l_Name').attr('readonly', 'readonly');// To make field read oNly 
+$('#2_s_2_l_Name').attr('aria-readonly', true);
+
+$('[name="' + ctrlID + '"]').after(sMapHTML);
+$("#s_S_A2_div").before(IFrame);
+$('[name="s_2_1_242_0"]').val()
+$('[aria-labelledby = ""ActiveFlag_Label"]').hide();
+$("#ActiveFlag_Label").parent().hide()
+
+$(document.activeElement).attr('id')//retrive the Id of the record which is active
+$(document.activeElement).parent().parent().parent().parent().parent().parent().parent().attr('id')// id of parent
+$(document.activeElement).parents().eq(12).attr('title')
+var topTwo = $("#Four").parents().eq(2);//parent DOM using JavaScript
+
+if(typeof raj == "undefined")// If result is not vaailable
+$("#IFrameId").contents().find("#text_1").val()
+SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Contact").GetFieldValue("Id")
+SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Contact").SetFieldValue("Last Name","Rahul");
+ var sTextFieldName = SiebelApp.S_App.GetActiveView().GetApplet("LXK MPS MADC Service R5 Detail Applet").GetControl("LXK LBS Latitude").GetInputName();
+ $("[name='"+sTextFieldName+"']").before(customdiv2);
+ var btn_name = auto_asset_button.GetInputName();
+
+ $('button[name="' + btn_name + '"]').after('<button type="button" class="siebui-ctrl-btn appletButton" id="GetReport" name="sGetReport" data-display="Get Report" tabindex="0" title="Service Requests:Get Report" aria-label="Service Requests:Get Report"><span>Proactive Dashboard Pilot</span></button>');
+
+ 
+ 	SiebelApp.S_App.GetActiveView().GetActiveApplet().GetBusComp().GetName()// To get Active BC Name
+	SiebelApp.S_App.GetActiveView().GetName()//// To get Active View Name
+	SiebelApp.S_App.GetActiveView().GetActiveApplet().GetName() // Get Active Applet Name
+	SiebelApp.S_App.GetActiveView().GetActiveApplet().GetFullId() // Get Applet Id
+	SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Account").GetRecordSet();//Get All records in UI
+	SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Account").GetRecordSet()
+	var listOfColumns = this.Get("ListOfColumns");// list of Coums in PM FileUpload
+
+	$(selector).css({property:value, property:value, ...})
+--------------------------------------------------------------------------------------
+// To know whether a class exist
+document.getElementById("SearchInput").classList
+document.getElementById("SearchInput").classList.contains("expandArea")
+// Toggel Class
+$('.text-block').toggleClass("collapsed pressed")
+$( "#foo" ).addClass( className );
+$( "#foo" ).removeClass( className );
+--------------------------------------------------------------------------------------
+// Capture the mouse move
+   $("#_swescrnbar").mouseover(function(event){   
+    var x = event.clientX;
+    var y = event.clientY;
+	console.log(x+":"+y);
+    $(".preview").css("left",x+"px");
+    $(".preview").css("top",(y-150)+"px");
+    });
+--------------------------------------------------------------------------------------
+// launching browser using cmd
+
+cmd /k start chrome http://d-441005510.wipro.com:8080/start.swe
+
+--------------------------------------------------------------------------------------
+// Google Transalte PM
+if( typeof( SiebelAppFacade.GoogleTranslatePM ) === "undefined" ){
+    SiebelJS.Namespace( "SiebelAppFacade.GoogleTranslatePM" );
+    define("siebel/custom/googletranslatepm", [], function () {
+        SiebelAppFacade.GoogleTranslatePM = ( function(){
+            function GoogleTranslatePM( proxy ){
+                SiebelAppFacade.GoogleTranslatePM.superclass.constructor.call( this, proxy );
+            }
+            SiebelJS.Extend( GoogleTranslatePM, SiebelAppFacade.PresentationModel );
+            GoogleTranslatePM.prototype.Init = function(){
+                SiebelAppFacade.GoogleTranslatePM.superclass.Init.call( this );
+                this.AddProperty( "DescriptionValue", "" );
+				this.AddMethod( "ShowSelection",  SelectionChange, { sequence : false, scope : this } );
+                this.AddMethod( "FieldChange",  OnFieldChange, { sequence : false, scope: this } );
+            };
+            function SelectionChange(){
+                var controls = this.Get( "GetControls" );
+                var control = controls[ "Description" ];
+                var value = this.ExecuteMethod( "GetFieldValue", control );
+                this.SetProperty( "DescriptionValue", value );
+            }
+            function OnFieldChange( control, value ){
+                if( control.GetName() === "Description" ){
+					this.SetProperty( "DescriptionValue", value );
+                }
+            }
+            return GoogleTranslatePM;
+        } ());
+        return "SiebelAppFacade.GoogleTranslatePM";
+    });
+}
+// Google Transalte PR
+if( typeof( SiebelAppFacade.GoogleTranslatePR ) === "undefined" ){
+    SiebelJS.Namespace( "SiebelAppFacade.GoogleTranslatePR" );
+    define("siebel/custom/googletranslatepr", ["siebel/phyrenderer"], function () {
+        SiebelAppFacade.GoogleTranslatePR = ( function(){
+            function GoogleTranslatePR( pm ){
+                SiebelAppFacade.GoogleTranslatePR.superclass.constructor.call( this, pm );
+            }
+            SiebelJS.Extend( GoogleTranslatePR, SiebelAppFacade.PhysicalRenderer );
+            GoogleTranslatePR.prototype.ShowUI = function () {
+                SiebelAppFacade.GoogleTranslatePR.superclass.Init.call(this);
+                this.AttachPMBinding( "DescriptionValue", Translate );
+				//Div for displaying translated text
+				var sTranslatedTextDiv = '<div class="mceGridField"><textarea id="translatedText" style="height:24px;width:120px;" readonly="readonly"></textarea></div>';
+				var sDescriptionInputName = SiebelApp.S_App.GetActiveView().GetApplet("Activity Form Applet").GetControl("Description").GetInputName();
+				$("[name='"+sDescriptionInputName+"']").after(sTranslatedTextDiv);
+            };
+            function Translate(){
+				var sDescription = this.GetPM().Get("DescriptionValue");
+				var sSourceLanguage = "en";
+				var sTargetLanguage = "ja";
+				var sAPIKey = "AIzaSyDb47LfWN46fy6CUNKnQxEAZRoUZyDVUrA";
+				var sGoogleTranslateURL = 'https://www.googleapis.com/language/translate/v2?key='+sAPIKey+'&source='+sSourceLanguage+'&target='+sTargetLanguage+'&q='+sDescription;
+				$.ajax(
+				{
+					url: sGoogleTranslateURL,
+					type: 'GET',
+					success: function(results)
+					{
+						var sTranslatedText = results.data.translations[0].translatedText;
+						console.log("Return Value : "+results);
+						console.log("Translated Text is : "+sTranslatedText);
+						$("#translatedText").val(sTranslatedText);
+					},
+					error: function(xhr, status, error)
+					{
+						//console.log("Error: " +error);
+					}
+				});
+            }
+            return GoogleTranslatePR;
+        } ());
+        return "SiebelAppFacade.GoogleTranslatePR";
+    });
+}
+--------------------------------------------------------------------------------------
+// Hide Fie;ds and Get the Profile Attribute
+if (typeof(SiebelAppFacade.lbshidefieldPR) === "undefined") {
+
+ SiebelJS.Namespace("SiebelAppFacade.lbshidefieldPR");
+ define("siebel/custom/lbshidefieldPR", ["siebel/phyrenderer"],
+  function () {
+   SiebelAppFacade.lbshidefieldPR = (function () {
+
+    function lbshidefieldPR(pm) {
+     SiebelAppFacade.lbshidefieldPR.superclass.constructor.apply(this, arguments);
+    }
+
+    SiebelJS.Extend(lbshidefieldPR, SiebelAppFacade.PhysicalRenderer);
+
+    lbshidefieldPR.prototype.Init = function () {
+     SiebelAppFacade.lbshidefieldPR.superclass.Init.apply(this, arguments);
+	 console.log("Responsibilities: "+SiebelApp.S_App.GetProfileAttr("User Responsibilities"));
+	 console.log("Position: "+SiebelApp.S_App.GetProfileAttr("Position"));
+	 console.log("LXK Position Type: "+SiebelApp.S_App.GetProfileAttr("LXK Position Type"));
+	 console.log("Job Role: "+SiebelApp.S_App.GetProfileAttr("LXK LBS Job Role"));
+
+	 if(SiebelApp.S_App.GetProfileAttr("User Responsibilities")== "LXK Resp for DB Extract")
+	 {
+	  var sTextFieldName = SiebelApp.S_App.GetActiveView().GetApplet("Service Request Detail Applet").GetControl("LXK R Firmware Version").GetInputName();
+	  $("[name='"+sTextFieldName+"']").closest('div').remove();
+	  //$("[name='"+sTextFieldName+"']").css({"display":"none"});
+	  //$("[name='"+sTextFieldName+"']").hide();
+	  document.getElementById("LXK_R_Firmware_Version_Label").closest('div').remove();
+	  //$("#LXK_R_Firmware_Version_Label").hide();
+	  
+	  }
+    }
+
+    return lbshidefieldPR;
+   }()
+  );
+  return "SiebelAppFacade.lbshidefieldPR";
+ })
+}
+--------------------------------------------------------------------------------------
+// Invoke BS in PR
+
+if (typeof(SiebelAppFacade.LBSMADCSRPR) === "undefined") {
+ SiebelJS.Namespace("SiebelAppFacade.LBSMADCSRPR");
+ define("siebel/custom/lbsmadcsrpr", ["siebel/phyrenderer"],
+  function () {
+   SiebelAppFacade.LBSMADCSRPR = (function () {
+    function LBSMADCSRPR(pm) {
+     SiebelAppFacade.LBSMADCSRPR.superclass.constructor.apply(this, arguments);
+    }
+    SiebelJS.Extend(LBSMADCSRPR, SiebelAppFacade.PhysicalRenderer);
+	LBSMADCSRPR.prototype.ShowUI = function () {  
+     SiebelAppFacade.LBSMADCSRPR.superclass.ShowUI.apply(this, arguments);
+	 var customdiv1='<td nowrap="" valign="middle" colspan="1" rowspan="1"><div class="mceGridLabel" align="Right" style="font-size:11px;"><span id="LXK_LBS_Office_Label">Move To Office:</span><br/><br/></div></td>';
+	 var customdiv2 = '<div class="mceGridField"><input type="text" name="OfficeText" value="" id="MoveToOffice" aria-labelledby="LXK_LBS_Office_Label" aria-label="Move To Office" style="height: 24px; width: 119.777777671814px;" maxlength="30" tabindex="0" class="siebui-input-align-left" data-seq="0" aria-readonly="true"></div>';
+	 var sTextFieldName = SiebelApp.S_App.GetActiveView().GetApplet("LXK MPS MADC Service R5 Detail Applet").GetControl("LXK LBS Latitude").GetInputName();
+	 $("#LXK_LBS_Latitude_Label").before(customdiv1);
+	 $("[name='"+sTextFieldName+"']").before(customdiv2);
+//Setting the field values	
+	 var oBS = SiebelApp.S_App.GetService("Inbound E-mail Database Operations");
+	 if(oBS){
+		 var sInputPS = SiebelApp.S_App.NewPropertySet();
+		 sInputPS.SetProperty("BusComp","Service Request");
+		 sInputPS.SetProperty("BusObj","Service Request");
+		 sInputPS.SetProperty("Id","1DA-HIL");
+		 sInputPS.SetProperty("Field: LXK MPS Inside Location","S3TCW11");
+		 //sInputPS.SetProperty("Field: LXK MPS IP Address","10.42.8.55"); //Any Number of Fields can be updated.
+		 oBS.InvokeMethod("UpdateRecord", sInputPS);
+			}
+//Gettting the field values.
+	 var sBS = SiebelApp.S_App.GetService("Inbound E-mail Database Operations");
+	 if(sBS){
+		 var sInputPS = SiebelApp.S_App.NewPropertySet();
+		 sInputPS.SetProperty("BusComp","Service Request");
+		 sInputPS.SetProperty("BusObj","Service Request");
+		 sInputPS.SetProperty("IdField","Id");
+		 sInputPS.SetProperty("Id","1DA-HIL");
+		 sInputPS.SetProperty("ValueFields","LXK MPS Inside Location");
+		 //sInputPS.SetProperty("ValueFields","LXK MPS Inside Location,LXK MPS IP Address");//Any Number of Fields can be retrieved.
+		 var sOutputPS = sBS.InvokeMethod("GetFieldValues", sInputPS);
+		 var sResultSet = sOutputPS.GetChildByType("ResultSet");
+		 var op1 = sResultSet.GetProperty("LXK MPS Inside Location");
+					if(op1){
+					document.getElementById("MoveToOffice").value = op1;
+	   					   }
+			}
+	}
+    return LBSMADCSRPR;
+   }()
+  );
+  return "SiebelAppFacade.LBSMADCSRPR";
+ })
+}
+--------------------------------------------------------------------------------------
+// Salutation
+
+if( typeof( SiebelAppFacade.SalutationPR ) === "undefined" ){
+    SiebelJS.Namespace( "SiebelAppFacade.SalutationPR" ); 
+    define("siebel/custom/salutationpr", [ "siebel/phyrenderer" ], function () {
+    SiebelAppFacade.SalutationPR = ( function(){
+        var siebConsts  = SiebelJS.Dependency( "SiebelApp.Constants" ); 
+        function SalutationPR( pm ){
+            SiebelAppFacade.SalutationPR.superclass.constructor.call( this, pm );	
+		}
+      SiebelJS.Extend( SalutationPR, SiebelAppFacade.PhysicalRenderer );
+		SalutationPR.prototype.ShowUI = function(){
+			SiebelAppFacade.SalutationPR.superclass.ShowUI.call( this );
+			var pm = this.GetPM();
+			var placeHolder = pm.Get( "GetPlaceholder" );  
+			var Controls = pm.Get("GetControls");
+			var Title = Controls["AppletTitle"];
+			FullId = pm.Get("GetFullId");
+			$("#s_" + FullId + "_div").html( '<div class="salutation-pr-applet" id="' + placeHolder + '" ></div>' );
+			$("#" + placeHolder).append('<span class="salutation-pr-title">' + Title.GetDisplayName() + '</span>');
+		}
+		SalutationPR.prototype.BindEvents = function () {
+		}
+		SalutationPR.prototype.BindData = function(){
+			var pm = this.GetPM();
+			var recordSet = pm.Get( "GetRecordSet" );
+			var recordLength = recordSet.length;
+			var Salutation = "";
+			for( var i = 0; i < recordLength; i++ ){
+					objRS = recordSet[i];
+					Salutation += objRS["Result Text"];
+			}
+			var placeHolder = pm.Get( "GetPlaceholder" );  
+			var LoginName = SiebelApp.S_App.GetUserName();
+			//var imgPath="https://dlexwsbla011.na.ds.lexmark.com:9001/profilepic/"+LoginName+".jpg";
+			var imgPath="IMAGES/Profile/"+LoginName+".jpg";
+			var customdiv='<div  class="photo-grid" ><figure id="myFigure"><img align="left" src=imgPath id="myImage" alt="Profile Pic" style="width:100px;height:100px"><figcaption align="center" style="width:110px;height:110px"></figcaption></figure></div>';
+			var origDiv = $('.salutation-pr-applet').attr('id');
+			$("#"+origDiv).append(customdiv);
+			$("#" + placeHolder).append('<span class="salutation-pr-salutation">' + Salutation + '</span>');
+			$("#myImage").error(function(){
+			$("#myImage").attr("src",imgPath);
+				$("#myImage").error(function(){	
+						//document.getElementById("myImage").src = "https://dlexwsbla011.na.ds.lexmark.com:9001/profilepic/default.png";
+						document.getElementById("myImage").src = "IMAGES/Profile/Default.jpg";
+				});
+			});
+		};	
+		return SalutationPR;
+	}());
+	return "SiebelAppFacade.SalutationPR";
+   });
+   }
+   
+--------------------------------------------------------------------------------------
+// Fb Integration
+		//Regenerate using:http://fiddle.jshell.net/f1foLs2c/show/?prpm=PR&object=DesktopForm&name=FacebookIntegration&userprops=&comments=Yes&logging=Yes
+if (typeof(SiebelAppFacade.FacebookIntegrationPR) === "undefined") {
+
+ SiebelJS.Namespace("SiebelAppFacade.FacebookIntegrationPR");
+ define("siebel/custom/FacebookIntegrationPR", ["siebel/phyrenderer"],
+  function () {
+   SiebelAppFacade.FacebookIntegrationPR = (function () {
+
+    function FacebookIntegrationPR(pm) {
+     SiebelAppFacade.FacebookIntegrationPR.superclass.constructor.apply(this, arguments);
+    }
+
+    SiebelJS.Extend(FacebookIntegrationPR, SiebelAppFacade.PhysicalRenderer);
+
+
+
+    FacebookIntegrationPR.prototype.BindData = function (bRefresh) {
+		var FbButton = '<div><button style="width: -moz-available;" type="button" id="FromFbButtonId" class="filterButtons">Sync From Fb</button><button style="width: -moz-available;" type="button" id="ToFbButtonId" class="filterButtons">Sync To Fb</button></div>';
+		$("#LXK_MPS_Fb_Comments_Label").replaceWith(FbButton);
+// ------------------------------ From Fb ----------------------------------------------------------		
+		  $("#FromFbButtonId").click(function() {
+              console.log("Handler for .click() called.");
+			   var FBURL = "https://graph.facebook.com/me?fields=id,name,posts&key=value&access_token=CAAWZCR0dogOUBAJIyeg1ZAIbZAAnRSSA4ZAtJSolFpqmBmvE17aUir1Nd9C1SZBW6IfbhhNtE8K6crWlBVKbAsXgBFjODeOIgvmZATXs9sDhY7W2hn7KzBtY4wRjDfiZBJOsru7EnI9lUVebWHWEeOcuAZC276lno8Mn9tD3hQaLk45kBz8Wlvx2uWVHUrUBq2liATDq59KUJDcTlzEAAfDZB&expires=5184000";
+			   var FbPost="";
+			   var FbId   = SiebelApp.S_App.GetBusObj().GetBusCompByName("Action").GetFieldValue("LXK MPS Fb Id");
+			   var sRowId = SiebelApp.S_App.GetBusObj().GetBusCompByName("Action").GetFieldValue("Id");
+			   var FbComment = "";
+			   $.ajax(
+				{
+					url: FBURL,
+					type: 'GET',
+					success: function(results)
+					{   
+					    console.log(results);
+						FbComment = results.posts.data[0].comments.data[FbId].message;
+															
+										//------------------------------Setting the field values	
+										 var oBS = SiebelApp.S_App.GetService("Inbound E-mail Database Operations");
+										 if(oBS){
+											 console.log("Called BS");
+											 var sInputPS = SiebelApp.S_App.NewPropertySet();
+											 sInputPS.SetProperty("BusComp", "Action");
+											 sInputPS.SetProperty("BusObj", "Action");
+											 sInputPS.SetProperty("Id", sRowId);
+											 sInputPS.SetProperty("Field: LXK MPS Fb Comments", FbComment);
+											 oBS.InvokeMethod("UpdateRecord", sInputPS);
+												}
+										//---------------------------Setting the field values -- over --------------------	
+										//---------------------------Refresh Applet -------------------------------------
+										var svcUI = SiebelApp.S_App.GetService("FINS Teller UI Navigation");
+											var psIn = SiebelApp.S_App.NewPropertySet();
+											var psOut = SiebelApp.S_App.NewPropertySet();
+											psIn.SetProperty("Refresh All","Y");
+											svcUI.InvokeMethod("RefreshCurrentApplet",psIn,psOut);
+											console.log(psOut);
+										//---------------------------Refresh Applet Over---------------------------------
+						$("[name=s_1_1_109_0]").val(FbComment);
+
+					},
+					error: function(xhr, status, error)
+					{
+						console.log("Error: " +error);
+					}
+				});
+   
+           });
+// ------------------------------ From Fb ----------------------------------------------------------		   
+// ------------------------------ To Fb ----------------------------------------------------------		   
+		   
+		   		  $("#ToFbButtonId").click(function() {
+				    var FbId   = SiebelApp.S_App.GetBusObj().GetBusCompByName("Action").GetFieldValue("LXK MPS Fb Id");
+				    //var FbObjectId = SiebelApp.S_App.GetBusObj().GetBusCompByName("Action").GetFieldValue("LXK MPS Fb Object Id");
+				    //console.log(FbObjectId);
+					var FbPostComments = SiebelApp.S_App.GetBusObj().GetBusCompByName("Action").GetFieldValue("LXK MPS Fb Comments");
+					var FBURL = "https://graph.facebook.com/me?fields=id,name,posts&key=value&access_token=CAAWZCR0dogOUBAJIyeg1ZAIbZAAnRSSA4ZAtJSolFpqmBmvE17aUir1Nd9C1SZBW6IfbhhNtE8K6crWlBVKbAsXgBFjODeOIgvmZATXs9sDhY7W2hn7KzBtY4wRjDfiZBJOsru7EnI9lUVebWHWEeOcuAZC276lno8Mn9tD3hQaLk45kBz8Wlvx2uWVHUrUBq2liATDq59KUJDcTlzEAAfDZB&expires=5184000";
+				    
+					$.ajax(
+									{
+										url: FBURL,
+										type: 'GET',	
+										success: function(results)
+										{   
+											console.log(results);
+											FbObjectId = (results.posts.data[0].comments.data[FbId].id);
+											console.log(results.posts.data[0].comments.data.length);
+											
+												var FbPostURL="https://graph.facebook.com/"+FbObjectId+"?access_token=CAAWZCR0dogOUBAJIyeg1ZAIbZAAnRSSA4ZAtJSolFpqmBmvE17aUir1Nd9C1SZBW6IfbhhNtE8K6crWlBVKbAsXgBFjODeOIgvmZATXs9sDhY7W2hn7KzBtY4wRjDfiZBJOsru7EnI9lUVebWHWEeOcuAZC276lno8Mn9tD3hQaLk45kBz8Wlvx2uWVHUrUBq2liATDq59KUJDcTlzEAAfDZB&expires=5184000";
+												$.post(FbPostURL,
+													   {
+														 message: FbPostComments
+													   },
+													   function(data,status){
+																	   console.log(data);
+																	   console.log(status);
+																	   var CmntID = data.id;
+																	   console.log("your comment is updated . Commnet id is : " + CmntID);  
+													   }); 
+											
+										
+										},
+										error: function(xhr, status, error)
+										{
+											console.log("Error: " +error);
+										}
+									});
+                    console.log("Expecting Changes in Comments")	;							   
+			           });		
+// ------------------------------ To Fb ----------------------------------------------------------		   
+    }
+
+
+
+    return FacebookIntegrationPR;
+   }()
+  );
+  return "SiebelAppFacade.FacebookIntegrationPR";
+ })
+}
+--------------------------------------------------------------------------------------
+//Pick List in HTML
+
+
+         <select id="SelectId" class="SelectClass">
+			<option value="Account">Account</option>
+			<option value="SR#">SR#</option>
+			<option value="Activity">Activity</option>
+		</select>
+	var e = document.getElementById("SelectId");
+	var PlaceHolder = e.options[e.selectedIndex].value;
+	
+--------------------------------------------------------------------------------------
+// local storage in browser
+localStorage.setItem("value1","rahul")
+localStorage.getItem("value1")
+
+--------------------------------------------------------------------------------------
+// autocomplete in browser
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+$("#SearchInput").autocomplete({source: availableTags});
+--------------------------------------------------------------------------------------
+//GetRecord List
+	     var oBS = SiebelApp.S_App.GetService("Inbound E-mail Database Operations");
+
+		 var sInputPS = SiebelApp.S_App.NewPropertySet();
+		 sInputPS.SetProperty("BusComp","Service Request");
+		 sInputPS.SetProperty("BusObj","Service Request");
+		 sInputPS.SetProperty("QueryFields","Id");
+		 sInputPS.SetProperty("Id","1-V5AAYR");
+		 sInputPS.SetProperty("ValueFields","Name");
+		 var sOutputPS = oBS.InvokeMethod("GetRecordList", sInputPS);
+		 var sResultSet = sOutputPS.GetChildByType("ResultSet");
+		 sResultSet.GetProperty("Name");
+		 console.log(sResultSet.propArray.record0);
+		 console.log(sResultSet.propArray.record1);
+		
+
+
+--------------------------------------------------------------------------------------
+
+// AutoComplete and JSON Handling
+
+var dataSrc = ["australia", "austria", "antartica", "argentina", "algeria"];
+    $("#SearchInput").autocomplete({
+        source:dataSrc
+    });
+	
+var json_1 = {"Field_1":{"name":"rahul"}}	
+json_1.Field_1.name
+var json_1 = {"Field_1":{"name_1":["rahul","logesh","munavir"]}}
+json_1.Field_1.name_1[1]
+
+--------------------------------------------------------------------------------------
+// combined Query
+select a.X_AGREE_ID,a.X_TYPE,b.ROW_ID from siebel.CX_SUPPLY_CTLG a,siebel.S_DOC_AGREE b where a.X_TYPE='Adhoc' and a.x_agree_id=b.row_id
+
+select a.X_AGREE_ID,a.X_TYPE,b.row_ID from siebel.CX_Supply_CTLG a join siebel.S_DOC_AGREE b on a.x_agree_id=b.row_id
+
+--------------------------------------------------------------------------------------
+//variable in sql query
+select model_code from base_product where model_code = :_modelcode
+--------------------------------------------------------------------------------------
+//Having in SQL
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders FROM (Orders
+INNER JOIN Employees
+ON Orders.EmployeeID=Employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 10;
+--------------------------------------------------------------------------------------
+//OpenUI
+PM to PR Communcication can be done throug PM Binding (AttachPMBinding ,set a property in PM and add this method in PR )
+ eg 
+ this.AddProperty( "DescriptionValue", "" ); // in PM
+ this.AddMethod("FieldChange", OnFieldChange, { sequence : false, scope: this }); or //this.AddMethod("ShowSelection", SelectionChange, { sequence : false, scope : this } );
+               function OnFieldChange(control,value){
+                  this.SetProperty( "DescriptionValue", value );
+                 }
+
+ this.AttachPMBinding( "DescriptionValue", FunctionName ); //in PR
+
+
+PR to PM can be done through Event Handler
+     // IN PR (within this function) or get myPM using this.GetPM() function
+ 	 function LXKMPSAgreeExpirationPR(pm) {
+     SiebelAppFacade.LXKMPSAgreeExpirationPR.superclass.constructor.apply(this, arguments);
+	                $("#S_A1").click(function(){
+                      pm.OnControlEvent("SAVE");
+                    });
+    }
+    // in PM init function					
+	this.AttachEventHandler( "SAVE", function SaveRecord(){console.log("PR to PM");});
+
+https://docs.oracle.com/cd/E14004_01/books/config_open_ui/appendix_b_reference7.html#wp1177697	
+https://docs.oracle.com/cd/E63029_01/books/ConfigOpenUI/appendix_a_api002.htm
+*****http://www.siebelhub.com/main/2015/05/siebel-open-ui-framework-event-tracing.html******
+
+// Proxy Events - to trap all the methods that are invoked on the proxy layer (NewRecord, Edit Field)
+
+this.AttachPreProxyExecuteBinding("ALL",PreProxyMethod);
+
+function PreProxyMethod (method, inPS, outPS){
+SiebelJS.Log("Just before " + method + " proxy method.");
+}
+
+
+//Capture the Post Execute Method in Siebel OpenUI
+  this.AddMethod("PostExecute", function( SelectionChange, input_property_set, output_property_set) → //PostExecute is similar to SelectionChange, FieldChange etc
+  {
+    console.log("Get the Values and Save the Record");
+  //SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Service Request").SetFieldValue("Priority",document.getElementById('Priority_id').value);
+  //this.ExecuteMethod("InvokeMethod","WriteRecord");
+  }, 
+  {sequence : true, scope : this});
+
+
+--------------------------------------------------------------------------------------
+//Date Field In OpenUI
+var FutDate;
+$("#DateFieldId").datetimepicker(
+{dateFormat:"dd-mm-yy",changeMonth:true,changeYear:true,onSelect: function(){FutDate = $(this).datepicker("getDate");}});
+SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("LXK SD Service Agreement").SetFieldValue("Agreement End Date",FutDate.toLocaleDateString());
+SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("LXK SD Service Agreement").SetFieldValue("Agreement End Date","11/11/2016");
+//only the above format is accepted for date
+insert into siebel.CX_SUPPLY_CTLG (X_AGREE_ID,CONFLICT_ID,CREATED,CREATED_BY,LAST_UPD,LAST_UPD_BY,MODIFICATION_NUM,ROW_ID,X_STAGING_FLAG,X_BILLING_MODEL,X_CONFIG_ID,X_QUANTITY,X_SAP_CONTRACT_NUM,X_SAP_LINE_NUM,X_SAP_SOLDTO_NUM,X_SUPPLY_ID) values ('1-10PHQ2I','123','2015-09-03 19:10:00.000','1-116J3L4','2015-09-03 19:11:00.000','1-116J3L4','567','1-ABC15','Y','Annuity Billing','abc','2','abc','abc','abc','1-12N183D')
+
+--------------------------------------------------------------------------------------
+//Trigger Key Press on Button Click
+$("#Id").click(function(){
+	
+	var esc = $.Event("keydown", { keyCode: 27 });$("body").trigger(esc);​
+});
+
+            OR
+$("#contact").click(function () {
+      $("#contactable").trigger('click');
+    });
+	
+--------------------------------------------------------------------------------------
+// Goto Particular Record In OpenUI
+function GotoSRView(sAppletName,sViewName,sSRId,sAccountId)
+			{
+				$("#filterDefLat").val(SiebelApp.S_App.GetBusObj().GetBusCompByName("LXK LBS Asset Mgmt - Asset").GetFieldValue("LXK LBS Latitude"));
+				$("#filterDefLng").val(SiebelApp.S_App.GetBusObj().GetBusCompByName("LXK LBS Asset Mgmt - Asset").GetFieldValue("LXK LBS Longitude"));
+				SiebelApp.S_App.SetProfileAttr("LBSGotoMapAccountId",sAccountId);
+				StoreFilterValues();
+				var oGotoViewBS = SiebelApp.S_App.GetService("FINS Goto View Service");
+				var sGotoViewInputPS = SiebelApp.S_App.NewPropertySet();
+				var sGotoViewOutputPS = SiebelApp.S_App.NewPropertySet();
+				if(oGotoViewBS)
+				{
+					sGotoViewInputPS.SetProperty("AppletName",sAppletName);
+					sGotoViewInputPS.SetProperty("ViewName",sViewName);
+					sGotoViewInputPS.SetProperty("RowId",sSRId);
+					sGotoViewOutputPS = oGotoViewBS.InvokeMethod("GotoView", sGotoViewInputPS);
+				}
+			}
+            return LBSAssetMapPR;
+
+--------------------------------------------------------------------------------------
+// To Get the Column position in PM 
+
+				var controls = this.Get( "GetControls" );
+				console.log(controls["LXK MPS Contract Yield"].GetColNum());
+
+--------------------------------------------------------------------------------------	
+// Same function on Multiple events in JavaScript
+
+ $("#S_A1").on('select click',function()
+ {
+	 console.log("Click and Select");
+ });
+
+--------------------------------------------------------------------------------------	
+// Parent in DOM, Active Element in JQuery
+
+$(document.activeElement).parents().eq(12).attr('title')
+
+--------------------------------------------------------------------------------------	
+//Active RCR Query
+SELECT a.created,a.status,A.ROW_ID RCR_ID , B.DISPLAY_NAME, C.VALUE Workflow_Name ,A.RPT_INTERVAL,  A.RPT_UOM, A.STATUS, A.SCHED_START_DT
+--select DISTINCT A.ROW_ID
+FROM siebel.S_SRM_REQUEST A, siebel.S_SRM_ACTION B, siebel.S_SRM_REQ_PARAM C
+WHERE REQ_TYPE_CD = 'RPT_PARENT'
+ AND STATUS  IN ( 'ACTIVE')
+and  A.ACTION_ID = B.ROW_ID AND C.REQ_ID = A.Row_id and c.value = 'LXK MPS Service Cost'	
+
+--------------------------------------------------------------------------------------	
+// Asynchronous Call
+
+-- Via Scripting
+    var svc = TheApplication().GetService("Asynchronous Server Requests")
+    var input = TheApplication().NewPropertySet();
+    var child = TheApplication().NewPropertySet();
+    var output = TheApplication().NewPropertySet();
+    input.SetProperty("Component", "WfProcMgr");
+    child.SetProperty("ProcessName", "Send Email Opportunity Sales Rep");
+    child.SetProperty("OpptyId", "1-XR45");
+    input.AddChild(child);
+    svc.InvokeMethod("SubmitRequest", input, output);
+-- Via WF
+      Process Properties :
+				Name : Inputs
+				Type : Hierarchy 
+				
+      Step 1 : 
+             Business Service : Workflow Utilities
+			 Business Service Method : echo	  
+			            ip Arg:
+						Inp                Process Property     Inputs
+						Inp.OpptyId        Process Property     Object Id
+						Inp.ProcessName    Process Property     Send Email Opportunity Sales Rep
+						op Arg:
+						Inputs             Output Argument  Inp
+      Step 2 :
+			Business Service : Asynchronous Server Requests
+			Business Service Method : SubmitRequest          	  
+			            ip Arg: 
+						Component Literal          WfProcMgr
+						Inputs    Process Property Inputs
+
+--------------------------------------------------------------------------------------	
+// Project Unlock from Back End					
+select locked_flg,obj_locked_flg from siebel.S_PROJECt where name='Activity'
+update siebel.S_PROJECT set locked_flg='N' where name='Service'
+update siebel.S_PROJECT set OBJ_LOCKED_FLG='Y' where name='FS Inventory Management (UI)' -- To Allow Oject locking
+//update SIEBEL.S_INT_OBJ set OBJ_LOCKED_FLG = 'Y',OBJ_LOCKED_BY='1-1GRKAR' where NAME in ( 'MF Account','ISS Order') » IO Object locking from backend
+//update SIEBEL.S_WFR_PROC set OBJ_LOCKED_FLG = 'Y',OBJ_LOCKED_BY='1-1GRKAR' where NAME='Pricing Procedure - Calculate Net Price: 1' » Lock WF 
+//UPDATE  SIEBEL.S_BUSCOMP SET OBJ_LOCKED_FLG='N' where NAME='Quote' → BC
+commit						
+--------------------------------------------------------------------------------------	
+//Get the List of records in the Applet Without Query
+SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Account").GetRecordSet()
+
+--------------------------------------------------------------------------------------	
+// Scrolling record in SIebel OpenUI
+in PR
+    function UIAppletPR(pm) {
+     SiebelAppFacade.UIAppletPR.superclass.constructor.apply(this, arguments);
+	 	            $("#s_2_rc").click(function(){
+                      pm.OnControlEvent("SCROLL");
+                    });
+    }
+in PM within Init function
+	 this.AttachEventHandler( "SCROLL", function(){this.ExecuteMethod("OnVerticalScroll", "nxrc");});	
+--------------------------------------------------------------------------------------	
+//Compile and Run Java	 
+set path=C:\Program Files\Java\jdk1.8.0_45\bin;
+javac HelloWorld.java
+java HelloWorld	 
+
+public class CharRec {
+	/*public CharRec() {
+		// TODO Auto-generated constructor stub
+	}*/
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Hello World");
+		OcrEngine ocrEngine = new OcrEngine();
+
+	}
+
+}
+--------------------------------------------------------------------------------------	
+//Prefernce File in Siebel
+
+Delete the .sfp  file to change the recent preferences
+--------------------------------------------------------------------------------------	
+//Enabling Automatic Configuration in System
+
+local machine
+software
+policies
+Microsoft
+internet explorer
+control pannel
+autoconfig as 1
+--------------------------------------------------------------------------------------	
+//Undo Record in OpenUI
+
+pm.ExecuteMethod("InvokeMethod","UndoRecord");
+
+// Set A Control Value
+SetControlValue(controls["Street Address"], $('input[name = "SA"]').val());
+--------------------------------------------------------------------------------------	
+//I UnderStand Risk is mising
+
+Select the Frame Info ->Copy the URL and add exception to server certificates
+
+--------------------------------------------------------------------------------------	
+//CMD
+
+
+
+nslookup
+--------------------------------------------------------------------------------------
+// Useful Sites
+http://siebel-solutions.blogspot.com/2012/06/siebel-architecture-exposed_08.html
+https://docs.oracle.com/cd/E14004_01/books/config_open_ui/architecture4.html
+
+
+
+
+--------------------------------------------------------------------------------------
+// Map NetWork Drives in QA
+
+Map NetWork Drive -> Z: -> \\PASHVGMPFS001\siebelfsQA
+
+--------------------------------------------------------------------------------------
+// Genrate Browser Script
+
+genbscript "D:\Siebel_IP14_2\Client\BIN\enu\uagent_LXK_VM.cfg" "D:\Siebel_IP14_2\Client\PUBLIC\enu"
+
+--------------------------------------------------------------------------------------
+// How To Access java And Rest From Siebel
+http://siebel.ittoolbox.com/groups/technical-functional/siebel-dev-l/eai-http-transport-and-rest-services-api-5720636
+http://kedar.nitty-witty.com/blog/xml-to-json-converter-in-siebel
+http://howtosiebel.blogspot.in/2013/11/EAI-Java-Business-Service.html
+javac -cp D:\Siebel_IP14_2\Tools_2\CLASSES\Siebel.jar RESTCall.java
+
+eg Code 
+
+import javax.swing.JOptionPane;
+import com.siebel.data.SiebelPropertySet;
+import com.siebel.eai.SiebelBusinessServiceException;
+public class RESTCall extends com.siebel.eai.SiebelBusinessService {
+public void doInvokeMethod(String methodName, SiebelPropertySet input,
+SiebelPropertySet output) throws SiebelBusinessServiceException {
+
+	String X = input.getProperty("X");
+	String Y = input.getProperty("Y");
+
+    if (X == null || X.equals("") || (Y == null) || Y.equals(""))
+    throw new SiebelBusinessServiceException("NO_PAR", "Missing param");
+
+
+	if (!methodName.equals ("Add"))
+	throw new SiebelBusinessServiceException("NO_SUCH_METHOD", "No such method");
+
+			else {
+			int x = 0;
+			int y = 0;
+			try {
+			   x = Integer.parseInt(X);
+			   y = Integer.parseInt(Y);
+			}
+			catch (NumberFormatException e) {
+			   throw new SiebelBusinessServiceException("NOT_INT", "Noninteger passed");
+			}
+			
+			int z = x * y;
+			JOptionPane.showMessageDialog(null, "Product Is"+z);
+			output.setProperty("Z", new Integer(z).toString());
+			}
+      }
+}
+
+Compile it in cmd
+javac -cp D:\Siebel_IP14_2\Tools_2\CLASSES\Siebel.jar RESTCall.java
+
+Client CFG Changes
+[JAVA]
+DLL = C:\Program Files (x86)\Java\jre1.8.0_101\bin\client\jvm.dll
+CLASSPATH = D:\Siebel_IP14_2\Tools_2\CLASSES\Siebel.jar;D:\Siebel_IP14_2\Tools_2\CLASSES\SiebelJI_enu.jar;D:\Siebel_IP14_2\Tools_2\CLASSES\.
+VMOPTIONS = -Xrs -Djava.compiler=NONE   
+
+Create JBS with class= ""
+Add BS Userproperty @class = ClassName
+
+Use Eclipse IDE for Dev, Add Siebel.jar and SiebelJI_enu.jar to the Build path
+The Dll file should be of 32 Bit Java
+JAVA_HOME is not required I think
+
+
+
+--------------------------------------------------------------------------------------
+// Prevent CORS issue in browser 
+start chrome with 
+start chrome  --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+--------------------------------------------------------------------------------------
+//Enabling Web Service in Developer Client
+https://docs.oracle.com/cd/E14004_01/books/EAI2/EAI2_WebServices12.html#wp211715
+
+CFG File 
+
+EnableWebServices : TRUE
+WebServicesPort :  2330
+
+D:\Siebel_IP14_2\Client\BIN\siebel.exe /l enu /c D:\Siebel_IP14_2\Client\BIN\enu\uagent.cfg /u SADMIN /p SADMIN /d Sample /webservice 2330
+
+netstat -a -p TCP
+--------------------------------------------------------------------------------------
+// Web Service in Siebel
+
+
+
+--------------------------------------------------------------------------------------
+//Capture the Post Execute Method in Siebel OpenUI
+  this.AddMethod("PostExecute", function( SelectionChange, input_property_set, output_property_set)
+  {
+    console.log("Get the Values and Save the Record");
+  //SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Service Request").SetFieldValue("Priority",document.getElementById('Priority_id').value);
+  //this.ExecuteMethod("InvokeMethod","WriteRecord");
+  }, 
+  {sequence : true, scope : this});
+
+--------------------------------------------------------------------------------------
+//Precsion and Scale in Sibel
+The length I have seen standard for Number remains 22 ..the precision would be 13+2 = 15 and scale will be 2
+
+Precsion: The maximum number of digits, to the left and right of the decimal point, for a numeric field.
+Scale : The maximum number of digits to the right of the decimal point for a numeric field. 
+
+--------------------------------------------------------------------------------------
+//Time BAsed Looping in JQuery
+
+ setInterval(function () {
+        console.log('it works' + new Date());
+    },2000);
+
+--------------------------------------------------------------------------------------
+// OpenUI Files
+
+OpenUI files should be kept in sba81 folder and SWEApp folder in server
+Siebel Server → WEBMASTER → Siebel Build and WebServer 
+
+Both App Server and Web Server
+--------------------------------------------------------------------------------------
+//Unused Columns in Table
+
+  SELECT NAME FROM SIEBEL.S_COLUMN where (NAME NOT IN (SELECT DISTINCT  a.NAME FROM SIEBEL.S_COLUMN a,SIEBEL.S_FIELD b where a.TBL_ID = '1-UZRQ-ODM5' and a.NAME = b.COL_NAME)) AND TBL_ID = '1-UZRQ-ODM5'
+
+  SELECT ROW_ID FROM SIEBEL.S_TABLE where NAME='S_SRV_REQ' ↑
+
+--------------------------------------------------------------------------------------
+// Place holder in Angular and Ionic
+  <!--  <ion-nav-view></ion-nav-view> -->
+  <div class="fade-view" ui-view=""></div>
+
+--------------------------------------------------------------------------------------
+// Conditionally add class in angular1
+<div  ng-class="list card {{move3D == true ? 'move3D' : '' }}">
+class="md-raised subColorOptions {{selectedColor == optionalColor.categoryName? 'showsubColor':''}}"
+ng-show="selectedColor == optionalColor.categoryName"
+
+--------------------------------------------------------------------------------------
+// ng-repeat key value in angular
+
+<tr ng-repeat="(key, value) in data">
+  <td> {{key}} </td> <td> {{ value }} </td>
+</tr>
+
+--------------------------------------------------------------------------------------
+// Media Query in CSS
+
+    @media (min-width:960px){
+      .bgColor{
+    	background: linear-gradient(#565656, rgba(0,0,0,0.12));
+     }
+    → when width is gretaer than 960px apply the css to the CLASSES
+
+    	@media (max-width: 599px) {
+	    #childDet {
+           max-width: 100% !important;
+           background: green;
+	    }
+	} 
+    → when width is less than 599px apply the css to the Id
+   
+--------------------------------------------------------------------------------------
+// Angular Material Layout
+
+<div layout="column" layout-gt-sm="row">
+  <div flex="60">
+  </div>
+  <div flex="40">
+  </div>
+</div>  
+
+layout-gt-sm  → width >= 960px,
+so when the width is greater than 960px, it gets into column alignment
+
+--------------------------------------------------------------------------------------
+// Diable Web Security in Chrome
+
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+//Launch Chrome in the above mode for Siebel 
+/b "D:\Siebel_IP14_2\LaunchChrome.cmd"  → cmd /k start chrome  --user-data-dir="C:/Chrome dev session" --disable-web-security http://d-441005510.wipro.com:8080/start.swe
+//Launch Edge in the above mode for Siebel 
+cmd /k start microsoft-edge:%1
+
+--------------------------------------------------------------------------------------
+//XLS to CSV File Conversion using vbs
+
+Usage    █  XlsToCsv FullSourcePath.xls FullDestinationPath.csv
+VBS Code █
+
+if WScript.Arguments.Count < 2 Then
+    WScript.Echo "Error! Please specify the source path and the destination. Usage: XlsToCsv SourcePath.xls Destination.csv"
+    Wscript.Quit
+End If
+Dim oExcel
+Set oExcel = CreateObject("Excel.Application")
+Dim oBook
+Set oBook = oExcel.Workbooks.Open(Wscript.Arguments.Item(0))
+oBook.SaveAs WScript.Arguments.Item(1), 6
+oBook.Close False
+oExcel.Quit
+WScript.Echo "Done_1"
+
+--------------------------------------------------------------------------------------
+//Bring CSS into SiebelOpenUi using the get Function
+
+$.get( "ajax/test.html", function( data ) {
+  $( ".result" ).html( data );
+  alert( "Load was performed." );
+});
+
+--------------------------------------------------------------------------------------
+// Send Data to TOA
+            $("#To_TOA_Id").click(function(){
+
+                if(SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Action").GetFieldValue("TOA Activity Id") == "")
+                {
+                          console.log("Sending Activity To TOA");
+                          var settings = {
+                          "async": true,
+                          "crossDomain": true,
+                          "url": "https://demo-ofsc.etadirect.com/rest/ofscCore/v1/activities",
+                          "method": "POST",
+                          "headers": {
+                            "authorization": "Basic YWRtaW5Ac3VucmlzZTMwNzkuZGVtbzpkNHVCanZUeWVE",
+                            "content-type": "application/json",
+                            "cache-control": "no-cache",
+                            "postman-token": "797993f5-5133-e1f9-f73d-1f0e694d1343"
+                          },
+                          "processData": false,
+                          "data": "{\n     \"resourceId\": \"03\",\n     \"activityType\":\"4\",\n     \"language\":\"en\",\n     \"timeZone\": \"Eastern\",\n     \"startTime\":\"2016-08-04 10:05:00\"\n}"
+                        }
+
+                        $.ajax(settings).done(function (response) {
+                          var TOARes = response;
+                          console.log(response);
+                          console.log("Id: "+TOARes.activityId);
+                          SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Action").SetFieldValue("TOA Activity Id",TOARes.activityId);
+                        });
+
+                }
+                else{
+                     alert("Activty has been sent to TOA already");
+
+                }
+            });
+--------------------------------------------------------------------------------------
+//  From TOA          
+            $("#From_TOA_Id").click(function(){
+
+                  if(SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Action").GetFieldValue("TOA Activity Id") == ""){alert("Activity isn't Synced to TOA");}
+                  else{
+                    var TOA_Id = SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Action").GetFieldValue("TOA Activity Id");
+                    var sURL = "https://demo-ofsc.etadirect.com/rest/ofscCore/v1/activities/"+TOA_Id;
+                        var settings = {
+                                  "async": true,
+                                  "crossDomain": true,
+                                  "url": sURL,
+                                  "method": "GET",
+                                  "headers": {
+                                    "authorization": "Basic YWRtaW5Ac3VucmlzZTMwNzkuZGVtbzpkNHVCanZUeWVE",
+                                    "cache-control": "no-cache",
+                                    "postman-token": "a6f2ec90-9a26-6249-575f-f87afd2adae7"
+                                  }
+                                }
+
+                                $.ajax(settings).done(function (response) {
+                                  console.log(response.timeOfAssignment);
+                                  var x = response.timeOfAssignment;
+                                  console.log(x.split(" ")[0].split("-")[2]+"/"+x.split(" ")[0].split("-")[1]+"/"+x.split(" ")[0].split("-")[0]+" "+x.split(" ")[1]);
+                                  SiebelApp.S_App.GetActiveBusObj().GetBusCompByName("Action").SetFieldValue("TOA Time Of Assignment",x.split(" ")[0].split("-")[2]+"/"+x.split(" ")[0].split("-")[1]+"/"+x.split(" ")[0].split("-")[0]+" "+x.split(" ")[1]);
+                                });
+
+                  }
+
+            });  
+--------------------------------------------------------------------------------------
+//  Directive in AngularJS.
+→ Move to the next element, after filling one input (automatic tabing)
+<input type="text" id="part1" class="form-control input" ng-model="myObject.part1" maxlength="1" move-next-on-maxlength / style="width:15% !important"> 
+
+angular.module('angularGanttDemoApp')
+.directive("moveNextOnMaxlength", function() {
+    return {
+        restrict: "A",
+        link: function($scope, element) {
+            element.on("input", function(e) {
+                if(element.val().length == element.attr("maxlength")) {
+                    var $nextElement = element.next();
+                    if($nextElement.length) {
+                        $nextElement[0].focus();
+                    }
+                }
+            });
+        }
+    }
+}); 
+
+--------------------------------------------------------------------------------------
+// Use the keyword to catch up the UI events in Log file			
+EventContext
+
+--------------------------------------------------------------------------------------
+//Display Format in siebel
+If you want to have a 3 decimal places for a number, for the applet control display format » 0.###
+--------------------------------------------------------------------------------------
+//Get the Angular injector
+
+var injector = angular.element(document.body).injector();
+var $state = injector.get("$state");
+
+$state.current.name
+--------------------------------------------------------------------------------------
+//Check In Check Out in AngularJS
+
+Set up a Visual SVN Server
+Install Tortoise in your local machine → Do check in check out process 
+
+--------------------------------------------------------------------------------------
+//RootScope in AngularJS
+$rootScope.name = $scope.something --→ JS
+{{$root.name}} --→ HTML
+
+
+--------------------------------------------------------------------------------------
+//Two ways to Access the property of an Objet → There is another way to access object properties — using bracket notation.
+$scope.jcSearchData['MF Job Card'];
+OR 
+$scope.jcSearchData.MF Job Card
+
+--------------------------------------------------------------------------------------
+// VBC -- Need Clarification
+
+You create a VBC by:
+1. Create a Business Component with a class type of "CSSBCVExtern"
+2. Add fields to the VBC without specifying the columns (as we are accessing 
+data from an external system)
+3. Create a Business Service with class âCSSServiceâ (write a script to connect 
+to the external system and get the data)
+4. Add Business Service to the VBC user prop object
+5. Create a Link for Parent/child Business Component (VBC can only be a child 
+BC)
+6. Add Link to BO
+7. Create applet to display data with class âCSSFramelistâ or âCSSFrameFormâ
+8. Create/Edit View for Applet9. Edit screen for View
+
+--------------------------------------------------------------------------------------
+// Generate an Image from base64 data in browser
+
+Type the following
+
+data:image/jpg;base64,base64Data
+//for PDF
+data:application/pdf;base64,YOURBASE64DATAHERE
+
+data:[<MIME-type>][;charset=<encoding>][;base64],<data>
+
+--------------------------------------------------------------------------------------
+// +,' ',>,~ in css
+Select and style every <p> element that are placed immediately after <div> elements:
+
+div + p { 
+    background-color: yellow;
+}
++ Sign:
+It is Adjacent sibling combinator. It combines two sequences of simple selectors having the same parent and the second one must come IMMEDIATELY after the first.
+div + p {  
+   color: green;  
+}
+
+Space:
+It is the descendant selector. It will target all p tags within container div.
+div#container p{
+font-weight:bold;
+}
+
+
+> Sign:
+It will target elements which are DIRECT children of a particular element.
+div#container > p {
+  border: 1px solid black;
+}
+
+~ Sign:
+It is general sibling combinator and similar to Adjacent sibling combinator. the difference is that the second selector does NOT have to immediately follow the first one means It will select all elements that is preceded by the former selector.
+div ~ p{
+background-color:blue;
+} 
+
+--------------------------------------------------------------------------------------
+// Observe In AngularJS
+
+app.controller('watchDemoCtrl', ['$scope', function($scope){
+    $scope.letters = ['A','B','C'];
+}]);
+
+$scope.$watch('letters', function (newValue, oldValue, scope) {
+    //Do anything with $scope.letters
+});
+
+--------------------------------------------------------------------------------------
+// Printer
+
+10.142.5.165
+HP LaserJet 4250 PCL6 Class Driver
+
+--------------------------------------------------------------------------------------
+// Move File
+function Service_PreInvokeMethod (MethodName, Inputs, Outputs)
+{
+	var msg = COMCreateObject("WScript.Shell");
+	var sBC;
+	
+	if(MethodName == "MoveFileToTemp"){
+	    var sFileReturn="";
+		var sSDR;
+		var sDDR;
+		var sImgArray = new Array();
+		var i=0;
+		var parentId = Inputs.GetProperty("ParentId");
+		//msg.Popup("Hey Got U BS : "+parentId);
+        var moveSuccess;
+		var deleteSuccess;
+        sBC = TheApplication().GetBusObject("Auto Vehicle").GetBusComp("Asset Mgmt - Asset Attachment");
+		with(sBC){
+          ClearToQuery();
+		  SetViewMode(AllView);
+		  SetSearchSpec("Asset Id", parentId);
+		  ExecuteQuery(ForwardOnly);
+		  //msg.Popup(CountRecords());
+		  var isRec = FirstRecord();
+			  while(isRec){
+			  sFileReturn = InvokeMethod("GetFile","AssetFileName");
+			  sImgArray[i] = sFileReturn.substring(sFileReturn.lastIndexOf("\\")+1);
+              sSDR = sFileReturn.substring(sFileReturn.indexOf(",")+1);
+			  sDDR = "D:\\Siebel_IP15\\Client\\PUBLIC\\enu\\IMAGES\\custom\\"+sImgArray[i];
+              moveSuccess = SElib.dynamicLink("Kernel32.dll","MoveFileA",STDCALL,sSDR,sDDR);
+			  //msg.Popup(moveSuccess);
+                 
+                   if(!moveSuccess){
+				     deleteSuccess = SElib.dynamicLink("Kernel32.dll","DeleteFileA",STDCALL,sSDR);
+					 //msg.Popup(deleteSuccess);
+				   }
+
+			  //msg.Popup(sImgArray[i]);
+			  i++;
+			  isRec = NextRecord();
+			  }
+          Outputs.SetProperty("ImgArray",sImgArray);  
+		 
+		
+		}
+
+    return (CancelOperation);
+
+	}
+	if(MethodName == "ShowBIP"){
+	var sAttId = Inputs.GetProperty("AttId");
+	//msg.Popup(sAttId);
+    sBC = TheApplication().GetBusObject("Report Administration").GetBusComp("Report Output BC");
+ 		with(sBC){
+          ClearToQuery();
+		  SetViewMode(AllView);
+		  SetSearchSpec("Id", sAttId);
+		  ExecuteQuery(ForwardOnly);
+		  //msg.Popup(CountRecords());
+		  if(FirstRecord()){
+		   sFileReturn = InvokeMethod("GetFile","ReportOutputFileName");
+		   //msg.Popup(sFileReturn);
+		   var sAbs = sFileReturn.substring(sFileReturn.indexOf(",")+1);		   
+		   var sFileName = sFileReturn.substring(sFileReturn.lastIndexOf("\\")+1);
+		   //msg.Popup(sFileName+" : "+sAbs);
+		   var sDestinationDir = "D:\\Siebel_IP15\\FS";
+		   var s = 'copy "'+sAbs+'" "'+sDestinationDir+'"';  
+		   //msg.Popup(s);
+		   var iReturnVal = Clib.system(s);		  
+		   //msg.Popup(iReturnVal);
+		   Outputs.SetProperty("FileName",sFileName); 
+		  }		 
+		}
+	
+    return (CancelOperation);	
+	}
+	return (ContinueOperation);
+}
+--------------------------------------------------------------------------------------
+// EAI HTTP Transport → REST Call Access
+
+EAI HTTP Transport
+  SendReceive
+    ip
+    <Value>           → {&quot;queueName&quot;:&quot;DR.50&quot;,&quot;channel&quot;:&quot;GMT.SVRCONN&quot;,&quot;username&quot;:&quot;a_KUMARGD&quot;,&quot;message&quot;:&quot;jksdxhgfkj&quot;,&quot;password&quot;:&quot;mqserver&quot;,&quot;operation&quot;:&quot;send&quot;}
+    CharSetConversion → UTF-8
+    HTTPContentType   → application/json
+    HTTPRequestMethod → POST
+    HTTPRequestURLTemplate → http://localhost:8080/JMS/rest/send
+    op
+    Response          → <Value>
+    EndOfFile         → EndOfData
+    TimedOut 		  → TimedOut
+--------------------------------------------------------------------------------------
+//  XML Heirarchy and Property Set Heirarchy
+
+    http://exploringsiebel.blogspot.in/2009/08/mapping-between-siebel-property-set-and.html
+--------------------------------------------------------------------------------------
+//    
